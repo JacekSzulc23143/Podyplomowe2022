@@ -1,22 +1,42 @@
 package pl.gda.wsb;
 
 public class Animal {
-    final String species; // informacja tekstowa
-    private Double weight; // liczba zmienno przecinkowa
-    Integer age; // liczba całkowita
-    public String name; // informacja tekstowa
-    Boolean isAlive; // true false - tak nie
+    private static final Double DEFAULT_DOG_WEIGHT = 10.0;
+    static final Double DEFAULT_CAT_WEIGHT = 2.0;
+    static final Double DEFAULT_WEIGHT = 5.0;
 
-    public Animal(String species) {
-        this.isAlive = true;
-        this.age = 1;
-        this.species = species;
+    final String species;  // informacja tekstowa. Pola finalne to są takie pola w których raz tylko można ustawić wartość.
+    private Double weight; // liczba zmienno przecinkowa. Pola prywatne nie mogą być modyfikowane z każdego miejsca w kodzie.
+    Integer age;           // liczba całkowita
+    public String name;    // informacja tekstowa. Pola publiczne mogą być modyfikowane z każdego miejsca w kodzie.
+    Boolean isAlive;       // true false - tak nie
 
-        switch (this.species){
-            case "felis":this.weight = 2.0; break;
-            case "cannis":this.weight = 10.0; break;
-            default: this.weight = 5.0; break;
+    public Animal(String species) { // Konstruktor specjalna metoda. Żeby utworzyć zmienną musisz podać gatunek (String species). Za każdym razem gdy utworzymy nowe zwierzę to wykona się ten kawałek kodu.
+        this.isAlive = true;        // każde zwierzę na początku jest żywe (this - to zwierzę które właśnie tworzymy)
+        this.age = 1;               // każde zwierzę ma wiek 1
+        this.species = species;     // gatunek tego zwierzęcia to będzie dokładnie ten sam gatunek który został przekazany w (String species)
 
+        switch (this.species) {                   // dla różnych wartości tego pola (this.species) wykonaj
+            case "felis":                         // jeżeli felis
+                this.weight = DEFAULT_CAT_WEIGHT; // to waga równa się 2 kg
+                break;                            // zakończ pracę
+            case "canis":                         // jeżeli canis
+                this.weight = DEFAULT_DOG_WEIGHT; // to waga równa się 10 kg
+                break;                            // zakończ pracę
+            default:                              // a w każdym innym przypadku
+                this.weight = DEFAULT_WEIGHT;     // waga równa się 5 kg
+                break;                            // zakończ pracę
+        }
+
+        /* Alternatywne rozwiązanie powyższego:
+        if (this.species.equals("canis")) {        // jeżeli ten gatunek równa się canis
+            this.weight = 10.0;                    // to waga równa się 10 kg
+        } else if (this.species.equals("felis")) { // a inaczej jeżeli ten gatunek równa się felis
+            this.weight = 2.0;                     // to waga równa się 2 kg
+        } else {                                   // a w każdym innym przypadku
+            this.weight = 5.0;                     // waga równa się 5 kg
+        }
+        */
     }
 
     /* Czy jesteście w stanie zrobić takie zadanie:
@@ -25,7 +45,7 @@ public class Animal {
     Jeśli masa zwierzęcia spadnie do 0 zwierze nie żyje.
     Kolejne próby karmienia lub wyprowadzania na spacer powinny skończyć odpowiednio pasywno-agresywnym komunikatem. */
 
-    void feed() {
+    void feed() { // metoda void feed()
         if (isAlive) {
             weight += 1.0; // weight = weight + 1
             System.out.println("thx for food");
@@ -34,7 +54,7 @@ public class Animal {
         }
     }
 
-    void takeForaWalk() {
+    void takeForAWalk() { // metoda void takeForAWalk()
         if (isAlive) {
             weight -= 1.0; // weight = weight - 1
             System.out.println("nice walk, thx");

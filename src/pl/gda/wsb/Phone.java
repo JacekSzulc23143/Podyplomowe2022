@@ -6,3 +6,5 @@ public class Phone {
     Double screenSize;
     String os;
 }
+
+// poprawiona
