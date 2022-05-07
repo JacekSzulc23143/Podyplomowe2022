@@ -1,71 +1,74 @@
 package pl.gda.wsb;
 
+import pl.gda.wsb.creatures.Animal;
+import pl.gda.wsb.creatures.Human;
+import pl.gda.wsb.creatures.Pet;
+import pl.gda.wsb.device.Car;
+import pl.gda.wsb.device.Device;
+import pl.gda.wsb.device.Phone;
+
 public class Main { // klasy nazywamy z Wielkiej litery "Main". Nazywanie zmiennych, klas, metod piszemy po angielsku.
 
-    public static void main(String[] args) { // statyczna metoda main uruchamia cały program.
-        Animal dog = new Animal("canis"); // tworzymy obiekt, nazwę obiektu piszemy z małej litery "dog", zarezerwowanie pamięci.
-        dog.isAlive = true;        // nazwę pola piszemy z małej litery. Intellij podpowiada ctrl + spacja.
-        dog.name = "Szarik";       // pola służą do przechowywania danych, a metody służą do operowania na tych danych.
+    public static void main(String[] args) {     // statyczna metoda main uruchamia cały program.
+        Animal dog = new Pet("canis"); // tworzymy obiekt, nazwę obiektu piszemy z małej litery "dog", zarezerwowanie
+        // pamięci.
+        dog.isAlive = true;                      // nazwę pola piszemy z małej litery. Intellij podpowiada ctrl + spacja.
+        dog.name = "Szarik";                     // pola służą do przechowywania danych, a metody służą do operowania na tych danych.
 
         System.out.println(dog.name);
         System.out.println("species: " + dog.species + " name: " + dog.name);
 
-        Animal cat = new Animal("felis");
+        Animal cat = new Pet("felis");
         cat.isAlive = true;
         cat.name = "Sierściuch";
 
-//        System.out.println(cat.name);
-//        System.out.println("species: " + cat.species + " name: " + cat.name);
+        System.out.println("Pet.toString");
 
         Human kacper = new Human();
+        kacper.age = 99;
 
-        kacper.setCar(new Car("bravo","fiat"));
+        kacper.setSalary(1000.0);
+        System.out.println(kacper.getSalary());
+
+        Car fiat = new Car("bravo","fiat", 2021);
+        fiat.value = 500.0;
+
+        kacper.setCar(fiat);
         kacper.isAlive = false;
 
         kacper.firstName = "Kacper";
         kacper.lastName = "Warda";
         kacper.pet = dog;
-        kacper.mobile = new Phone();
+        kacper.mobile = new Phone("6s", "apple", 2018);
 
-        kacper.mobile.model = "6s";
-        kacper.mobile.producer = "apple";
         kacper.pet.feed();
 
-//        System.out.println(kacper.pet.name);
+        System.out.println(kacper.getCar());
+        System.out.println(kacper);
 
-        kacper.setCar(new Car("passat", "vw"));
-        System.out.println(kacper.getCar().millage);
+        Car pasat1 = new Car("pasat", "vw", 2001);
+        pasat1.value = 1200.0;
+        Car pasat2 = new Car("pasat", "vw", 2001);
+        pasat2.value = 1300.0;
 
-        kacper.setSalary(1000.0);
-        System.out.println(kacper.getSalary());
+        System.out.println(pasat1.hashCode());
+        System.out.println(pasat2.hashCode());
 
-//        Car fiat = new Car("bravo", "fiat");
-//        Car pasat = new Car("passat", "vw");
+        if (pasat1.equals(pasat2)) {
+            System.out.println("to samo auto");
+        } else {
+            System.out.println("inne auto");
+        }
 
-/*      Typy proste
-        Integer i = 2; // Klasa, ctrl + klik lewym
-        byte bt;
-        short s = 32;
-        int j = 2;
-        long l = 123123123;
-        float f = 32.222f;
-        double d = 32.232;
-        char c = 'c';
-        boolean b = true;
-*/
+        kacper.feed();
+        System.out.println(kacper.species);
 
-//        System.out.println("ten kot to " + cat.name);
-//        System.out.println(cat.weight);
+//        Device fridge = new Device("S47632", "samsung", 2021);
 
-//        Phone iphone6s = new Phone();
-//        iphone6s.producer = "Apple";
-//        iphone6s.model = "6s";
-//        iphone6s.screenSize = 4.2;
-//        iphone6s.os = "ios";
-//
-//        System.out.println(iphone6s.producer + " " + iphone6s.model);
+        System.out.println(pasat1 instanceof Car);
+        System.out.println(pasat1 instanceof Device);
 
-//        System.out.println(dog.weight);
+        System.out.println(pasat1);
 
     }
 }

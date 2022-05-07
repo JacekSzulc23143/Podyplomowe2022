@@ -1,15 +1,16 @@
-package pl.gda.wsb;
+package pl.gda.wsb.creatures;
 
-public class Animal {
-    private static final Double DEFAULT_DOG_WEIGHT = 10.0;
-    static final Double DEFAULT_CAT_WEIGHT = 2.0;
+public abstract class Animal implements Feedable {
+    private static final Double DEFAULT_DOG_WEIGHT = 9.0;
+    static final Double DEFAULT_CAT_WEIGHT = 2.5;
     static final Double DEFAULT_WEIGHT = 5.0;
 
-    final String species;  // informacja tekstowa. Pola finalne to są takie pola w których raz tylko można ustawić wartość.
+    public final String species;  // informacja tekstowa. Pola finalne to są takie pola w których raz tylko można ustawić
+    // wartość.
     private Double weight; // liczba zmienno przecinkowa. Pola prywatne nie mogą być modyfikowane z każdego miejsca w kodzie.
-    Integer age;           // liczba całkowita
+    public Integer age;           // liczba całkowita
     public String name;    // informacja tekstowa. Pola publiczne mogą być modyfikowane z każdego miejsca w kodzie.
-    Boolean isAlive;       // true false - tak nie
+    public Boolean isAlive;       // true false - tak nie
 
     public Animal(String species) { // Konstruktor specjalna metoda. Żeby utworzyć zmienną musisz podać gatunek (String species). Za każdym razem gdy utworzymy nowe zwierzę to wykona się ten kawałek kodu.
         this.isAlive = true;        // każde zwierzę na początku jest żywe (this - to zwierzę które właśnie tworzymy)
@@ -30,13 +31,17 @@ public class Animal {
 
         /* Alternatywne rozwiązanie powyższego:
         if (this.species.equals("canis")) {        // jeżeli ten gatunek równa się canis
-            this.weight = 10.0;                    // to waga równa się 10 kg
+            this.weight = 9.0;                    // to waga równa się 9 kg
         } else if (this.species.equals("felis")) { // a inaczej jeżeli ten gatunek równa się felis
-            this.weight = 2.0;                     // to waga równa się 2 kg
+            this.weight = 2.5;                     // to waga równa się 2.5 kg
         } else {                                   // a w każdym innym przypadku
             this.weight = 5.0;                     // waga równa się 5 kg
         }
         */
+    }
+
+    public Double getWeight() {
+        return this.weight;
     }
 
     /* Czy jesteście w stanie zrobić takie zadanie:
@@ -65,5 +70,7 @@ public class Animal {
             System.out.println("halo policja, ktoś targa martwe zwierze po chodniku");
         }
     }
+
+    public abstract String toString();
 }
 
