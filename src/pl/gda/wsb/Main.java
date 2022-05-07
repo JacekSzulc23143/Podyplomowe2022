@@ -70,5 +70,6 @@ public class Main { // klasy nazywamy z Wielkiej litery "Main". Nazywanie zmienn
 
         System.out.println(pasat1);
 
+        //
     }
 }

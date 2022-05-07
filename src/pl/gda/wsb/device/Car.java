@@ -39,8 +39,7 @@ public abstract class Car extends Device{
     public int hashCode() {
         return Objects.hash(model, producer, millage, engineVolume, color, value);
     }
-
-
+    //
 }
 
 

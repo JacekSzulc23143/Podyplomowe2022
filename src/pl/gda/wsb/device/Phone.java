@@ -27,4 +27,5 @@ public class Phone extends Device implements Rechargeable{
         System.out.println("czekaj");
         System.out.println("tak, ciągle czekaj");
     }
+    //
 }
