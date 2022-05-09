@@ -2,18 +2,22 @@ package pl.gda.wsb.device;
 
 import java.util.Objects;
 
-public abstract class Car extends Device{
-    public Double millage;        // liczba zmienno przecinkowa
-    public Double engineVolume;   // liczba zmienno przecinkowa
-    public String color;          // informacja tekstowa
-    public Double value;          // dodaj pole wartość (ofkoz po angielsku) do samochodu
+public class Car extends Device implements Rechargeable {
+    public Double millage;
+    public Double engineVolume;
+    public String color;
+    public Double value;
 
-    public Car(String model, String producer, Integer yearOfProduction) { // Konstruktor. Prawym Generate... Constructor
+    // Konstruktor. Prawym Generate... Constructor
+    public Car(String model, String producer, Integer yearOfProduction) {
         super(model, producer, yearOfProduction);
     }
 
     public void turnOn() {
-
+        System.out.println("przekręcam kluczyk");
+        System.out.println("modlę się");
+        System.out.println("przeklinam");
+        System.out.println("odpalił");
     }
 
     @Override
@@ -27,6 +31,7 @@ public abstract class Car extends Device{
                 '}';
     }
 
+    // porównywanie
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -36,10 +41,18 @@ public abstract class Car extends Device{
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(model, producer, millage, engineVolume, color, value);
+    public int hashCode() { return Objects.hash(model, producer, millage, engineVolume, color, value); }
+
+    @Override
+    public void recharge() {
+        System.out.println("podjedź na stację");
+        System.out.println("zacznij płakać");
+        System.out.println("sprawdź stan konta");
+        System.out.println("przemyśl to poważnie");
+        System.out.println("zatankuj");
+        System.out.println("płacz nadal");
+        System.out.println("zapłać");
     }
-    //
 }
 
 

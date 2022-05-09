@@ -5,32 +5,31 @@ import pl.gda.wsb.device.Car;
 import pl.gda.wsb.device.Phone;
 
 public class Human extends Animal {
-    public String firstName; // kolejno typ zmiennej i nazwa zmiennej
+    public String firstName;
     public String lastName;
 
     public Phone mobile;
     public Pet pet;
-    private Car car; // zmień pole Car w człowieku na pole prywatne
+    private Car car;
     private Double salary;
 
     public Human() {
         super("homo sapiens");
     }
 
-    // dodaj getter do człowieka, który zwraca samochód bez żadnej dodatkowej logiki
-    public Car getCar() { // Getter to metoda, która odczytuje wartość zmiennej.
+    public Car getCar() {
         return this.car;
     }
 
-    // dodaj setter, który sprawdza, czy człowieka stać na ten samochód
-    public void  setCar(Car car) {     // Setter to metoda, która aktualizuje wartość zmiennej.
-        if (this.salary > car.value) { // jeśli zarobki człowieka są wyższe niż cena samochodu wypisujemy info, że udało się kupić za gotówkę i przypisujemy samochód
+
+    public void  setCar(Car car) {
+        if (this.salary > car.value) {
             System.out.println("gratulacje kupiłeś za gotówę " + car.model);
             this.car = car;
-        } else  if (this.salary > car.value / 12.0) { // jeżeli zarobi są większe niż 1/12 wartości samochodu wypisujemy info, że udało się kupić na kredyt (no trudno) i przypisujemy samochód
+        } else  if (this.salary > car.value / 12.0) {
             System.out.println("kupiłeś na kredyt " + car.model);
             this.car = car;
-        } else { // w pozostałych wypadkach wypisujemy info, w stylu "zapisz się na studia i znajdź nową robotę albo idź po podwyżkę" i nie przypisujemy samochodu
+        } else {
             System.out.println("najpierw nazbieraj potem kupuj");
         }
     }
@@ -52,7 +51,6 @@ public class Human extends Animal {
     }
 
     public String toString() {
-        return this.firstName + " " + this.lastName + " " + age;
+        return this.firstName + " " + this.lastName + " lat " + age;
     }
-    //
 }

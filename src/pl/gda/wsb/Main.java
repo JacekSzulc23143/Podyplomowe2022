@@ -7,22 +7,22 @@ import pl.gda.wsb.device.Car;
 import pl.gda.wsb.device.Device;
 import pl.gda.wsb.device.Phone;
 
-public class Main { // klasy nazywamy z Wielkiej litery "Main". Nazywanie zmiennych, klas, metod piszemy po angielsku.
+public class Main {
 
-    public static void main(String[] args) {     // statyczna metoda main uruchamia cały program.
-        Animal dog = new Pet("canis"); // tworzymy obiekt, nazwę obiektu piszemy z małej litery "dog", zarezerwowanie
+    public static void main(String[] args) {
+        Pet dog = new Pet("canis");
         // pamięci.
-        dog.isAlive = true;                      // nazwę pola piszemy z małej litery. Intellij podpowiada ctrl + spacja.
-        dog.name = "Szarik";                     // pola służą do przechowywania danych, a metody służą do operowania na tych danych.
+        dog.isAlive = true;
+        dog.name = "Szarik";
 
         System.out.println(dog.name);
         System.out.println("species: " + dog.species + " name: " + dog.name);
 
-        Animal cat = new Pet("felis");
+        Pet cat = new Pet("felis");
         cat.isAlive = true;
         cat.name = "Sierściuch";
 
-        System.out.println("Pet.toString");
+        System.out.println("Pet.toString(): " + cat);
 
         Human kacper = new Human();
         kacper.age = 99;
@@ -63,13 +63,10 @@ public class Main { // klasy nazywamy z Wielkiej litery "Main". Nazywanie zmienn
         kacper.feed();
         System.out.println(kacper.species);
 
-//        Device fridge = new Device("S47632", "samsung", 2021);
-
         System.out.println(pasat1 instanceof Car);
         System.out.println(pasat1 instanceof Device);
 
         System.out.println(pasat1);
 
-        //
     }
 }

@@ -1,15 +1,11 @@
 package pl.gda.wsb.device;
 
 public abstract class Device {
-
     final public String producer;
     final public String model;
     final public Integer yearOfProduction;
 
-//    public final String model;    // informacja tekstowa
-//    final String producer; // informacja tekstowa
-
-
+    // konstruktor
     public Device(String producer, String model, Integer yearOfProduction) {
         this.producer = producer;
         this.model = model;
@@ -20,6 +16,5 @@ public abstract class Device {
         return "sdfgswegsdfgsdfgsdfgsdgfds";
     }
 
-    public abstract void turnOf();
-    //
+    public abstract void turnOn();
 }

@@ -1,6 +1,6 @@
 package pl.gda.wsb.creatures;
 
-public class Pet extends Animal{
+public class Pet extends Animal {
 
     public Pet(String species) {
         super(species);
@@ -9,5 +9,4 @@ public class Pet extends Animal{
     public String toString() {
         return this.species + " " + this.name;
     }
-    //
 }

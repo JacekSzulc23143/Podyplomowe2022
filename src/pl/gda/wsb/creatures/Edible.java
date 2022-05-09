@@ -1,7 +1,6 @@
 package pl.gda.wsb.creatures;
 
-public interface Edbile {
+public interface Edible {
 
     void beEaten();
-    //
 }

@@ -4,64 +4,52 @@ public abstract class Animal implements Feedable {
     private static final Double DEFAULT_DOG_WEIGHT = 9.0;
     static final Double DEFAULT_CAT_WEIGHT = 2.5;
     static final Double DEFAULT_WEIGHT = 5.0;
+    private static final Double DEFAULT_FOOD_WEIGHT = 1.0;
 
-    public final String species;  // informacja tekstowa. Pola finalne to są takie pola w których raz tylko można ustawić
-    // wartość.
-    private Double weight; // liczba zmienno przecinkowa. Pola prywatne nie mogą być modyfikowane z każdego miejsca w kodzie.
-    public Integer age;           // liczba całkowita
-    public String name;    // informacja tekstowa. Pola publiczne mogą być modyfikowane z każdego miejsca w kodzie.
-    public Boolean isAlive;       // true false - tak nie
+    public final String species;
+    protected Double weight;
+    public Integer age;
+    public String name;
+    public Boolean isAlive;
 
-    public Animal(String species) { // Konstruktor specjalna metoda. Żeby utworzyć zmienną musisz podać gatunek (String species). Za każdym razem gdy utworzymy nowe zwierzę to wykona się ten kawałek kodu.
-        this.isAlive = true;        // każde zwierzę na początku jest żywe (this - to zwierzę które właśnie tworzymy)
-        this.age = 1;               // każde zwierzę ma wiek 1
-        this.species = species;     // gatunek tego zwierzęcia to będzie dokładnie ten sam gatunek który został przekazany w (String species)
+    // Konstruktor przepis na tworzenie nowego obiektu (zwierzęcia).
+    public Animal(String species) {
+        this.isAlive = true;
+        this.age = 1;
+        this.species = species;
 
-        switch (this.species) {                   // dla różnych wartości tego pola (this.species) wykonaj
-            case "felis":                         // jeżeli felis
-                this.weight = DEFAULT_CAT_WEIGHT; // to waga równa się 2 kg
-                break;                            // zakończ pracę
-            case "canis":                         // jeżeli canis
-                this.weight = DEFAULT_DOG_WEIGHT; // to waga równa się 10 kg
-                break;                            // zakończ pracę
-            default:                              // a w każdym innym przypadku
-                this.weight = DEFAULT_WEIGHT;     // waga równa się 5 kg
-                break;                            // zakończ pracę
+        switch (this.species) {
+            case "felis":
+                this.weight = DEFAULT_CAT_WEIGHT;
+                break;
+            case "canis":
+                this.weight = DEFAULT_DOG_WEIGHT;
+                break;
+            default:
+                this.weight = DEFAULT_WEIGHT;
+                break;
         }
-
-        /* Alternatywne rozwiązanie powyższego:
-        if (this.species.equals("canis")) {        // jeżeli ten gatunek równa się canis
-            this.weight = 9.0;                    // to waga równa się 9 kg
-        } else if (this.species.equals("felis")) { // a inaczej jeżeli ten gatunek równa się felis
-            this.weight = 2.5;                     // to waga równa się 2.5 kg
-        } else {                                   // a w każdym innym przypadku
-            this.weight = 5.0;                     // waga równa się 5 kg
-        }
-        */
     }
 
     public Double getWeight() {
         return this.weight;
     }
 
-    /* Czy jesteście w stanie zrobić takie zadanie:
-    Dodaj metody void feed() i void takeForAWalk() w klasie Animal.
-    Karmienie zwierzęcia powinno zwiększać jego masę, wyprowadzenia na spacer zmniejszać.
-    Jeśli masa zwierzęcia spadnie do 0 zwierze nie żyje.
-    Kolejne próby karmienia lub wyprowadzania na spacer powinny skończyć odpowiednio pasywno-agresywnym komunikatem. */
-
-    void feed() { // metoda void feed()
+    public void feed() {
+        this.feed(DEFAULT_FOOD_WEIGHT);
+    }
+    public void feed(Double foodWeight) {
         if (isAlive) {
-            weight += 1.0; // weight = weight + 1
+            weight += foodWeight;
             System.out.println("thx for food");
         } else {
             System.out.println("trochę za późno");
         }
     }
 
-    void takeForAWalk() { // metoda void takeForAWalk()
+    public void takeForAWalk() {
         if (isAlive) {
-            weight -= 1.0; // weight = weight - 1
+            weight -= 1.0;
             System.out.println("nice walk, thx");
             if (weight <= 0.0) {
                 isAlive = false;
@@ -72,6 +60,5 @@ public abstract class Animal implements Feedable {
     }
 
     public abstract String toString();
-    //
 }
 

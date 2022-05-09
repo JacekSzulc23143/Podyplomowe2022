@@ -1,6 +1,6 @@
 package pl.gda.wsb.creatures;
 
-public class FarmAnimal extends Animal implements Edbile{
+public class FarmAnimal extends Animal implements Edible {
 
     public FarmAnimal(String species) {
         super(species);
@@ -14,9 +14,7 @@ public class FarmAnimal extends Animal implements Edbile{
     @Override
     public void beEaten() {
         this.isAlive = false;
-        this. weight = 0.0;
-        sout    "oasdsdfasdf"
-
+        this.weight = 0.0;
+        System.out.println("omniomniomniom");
     }
-    //
 }

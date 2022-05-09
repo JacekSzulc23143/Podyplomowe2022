@@ -1,6 +1,6 @@
 package pl.gda.wsb.device;
 
-public class Phone extends Device implements Rechargeable{
+public class Phone extends Device implements Rechargeable {
     public Double screenSize;
     public String os;
 
@@ -27,5 +27,4 @@ public class Phone extends Device implements Rechargeable{
         System.out.println("czekaj");
         System.out.println("tak, ciągle czekaj");
     }
-    //
 }
