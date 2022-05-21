@@ -1,6 +1,8 @@
 package pl.gda.wsb.device;
 
-public abstract class Device {
+import pl.gda.wsb.Saleable;
+
+public abstract class Device implements Saleable {
     final public String producer;
     final public String model;
     final public Integer yearOfProduction;
@@ -13,7 +15,7 @@ public abstract class Device {
     }
 
     public String toString() {
-        return "sdfgswegsdfgsdfgsdfgsdgfds";
+        return "Awfawfawefawefawefargesrgiuehto3q87y";
     }
 
     public abstract void turnOn();

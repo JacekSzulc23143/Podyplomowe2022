@@ -1,17 +1,14 @@
 package pl.gda.wsb;
 
-import pl.gda.wsb.creatures.Animal;
 import pl.gda.wsb.creatures.Human;
 import pl.gda.wsb.creatures.Pet;
 import pl.gda.wsb.device.Car;
-import pl.gda.wsb.device.Device;
 import pl.gda.wsb.device.Phone;
 
 public class Main {
 
     public static void main(String[] args) {
         Pet dog = new Pet("canis");
-        // pamięci.
         dog.isAlive = true;
         dog.name = "Szarik";
 
@@ -48,25 +45,37 @@ public class Main {
 
         Car pasat1 = new Car("pasat", "vw", 2001);
         pasat1.value = 1200.0;
+        pasat1.color = "Niebieski";
         Car pasat2 = new Car("pasat", "vw", 2001);
         pasat2.value = 1300.0;
 
-        System.out.println(pasat1.hashCode());
-        System.out.println(pasat2.hashCode());
+        Human brotherInLaw = new Human();
+        brotherInLaw.cash = 3000.0;
 
-        if (pasat1.equals(pasat2)) {
-            System.out.println("to samo auto");
-        } else {
-            System.out.println("inne auto");
+        kacper.setCar(pasat1);
+
+        try {
+            pasat1.sell(kacper, brotherInLaw, 1000.0);
+        } catch (Exception e) {
+            System.out.println("Nie udało się sprzedać " + pasat1);
+            e.printStackTrace();
         }
 
-        kacper.feed();
-        System.out.println(kacper.species);
+        System.out.println("Samochód szwagra: " + brotherInLaw.getCar());
+        System.out.println("Samochód Kacpra: " + kacper.getCar());
 
-        System.out.println(pasat1 instanceof Car);
-        System.out.println(pasat1 instanceof Device);
+        Human sister = new Human();
+        sister.cash = 5000.0;
 
-        System.out.println(pasat1);
+        kacper.pet = brotherInLaw;
+
+        try {
+            brotherInLaw.sell(kacper, sister, 2.0);
+            System.out.println("Szwagier sprzedany");
+        } catch (Exception e) {
+            System.out.println("Szwagier nie sprzedany");
+            e.printStackTrace();
+        }
 
     }
 }

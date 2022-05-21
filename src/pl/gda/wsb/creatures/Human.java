@@ -1,6 +1,5 @@
 package pl.gda.wsb.creatures;
 
-import pl.gda.wsb.creatures.Animal;
 import pl.gda.wsb.device.Car;
 import pl.gda.wsb.device.Phone;
 
@@ -9,12 +8,14 @@ public class Human extends Animal {
     public String lastName;
 
     public Phone mobile;
-    public Pet pet;
-    private Car car;
+    public Animal pet;
+    public Car car;
     private Double salary;
+    public Double cash;
 
     public Human() {
         super("homo sapiens");
+        this.cash = 0.0;
     }
 
     public Car getCar() {
@@ -53,4 +54,5 @@ public class Human extends Animal {
     public String toString() {
         return this.firstName + " " + this.lastName + " lat " + age;
     }
+
 }

@@ -1,6 +1,8 @@
 package pl.gda.wsb.creatures;
 
-public abstract class Animal implements Feedable {
+import pl.gda.wsb.Saleable;
+
+public abstract class Animal implements Feedable, Saleable {
     private static final Double DEFAULT_DOG_WEIGHT = 9.0;
     static final Double DEFAULT_CAT_WEIGHT = 2.5;
     static final Double DEFAULT_WEIGHT = 5.0;
@@ -29,6 +31,26 @@ public abstract class Animal implements Feedable {
                 this.weight = DEFAULT_WEIGHT;
                 break;
         }
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price) throws Exception {
+        if (seller.pet != this) {
+            throw new Exception("Sprzedawca nie ma zwierzęcia");
+        }
+        if (buyer.cash < price) {
+            throw new Exception("Kupujący nie ma dość pieniędzy");
+        }
+        if (this instanceof Human) {
+            throw new Exception("Handel ludźmi jest zabroniony");
+        }
+
+        buyer.cash -= price;
+        seller.cash += price;
+        buyer.pet = this;
+        seller.pet = null;
+        System.out.println("Sprzedano zwierzaka");
+
     }
 
     public Double getWeight() {
