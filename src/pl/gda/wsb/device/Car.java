@@ -4,13 +4,13 @@ import pl.gda.wsb.creatures.Human;
 
 import java.util.Objects;
 
-public class Car extends Device implements Rechargeable {
+public abstract class Car extends Device implements Rechargeable {
     public Double millage;
     public Double engineVolume;
     public String color;
     public Double value;
 
-    // Konstruktor. Prawym Generate... Constructor
+    // Konstruktor który tworzy nowy samochód. Prawym Generate... Constructor
     public Car(String model, String producer, Integer yearOfProduction) {
         super(model, producer, yearOfProduction);
     }
@@ -22,6 +22,7 @@ public class Car extends Device implements Rechargeable {
         System.out.println("odpalił");
     }
 
+    // przesłonięta metoda z Device
     @Override
     public String toString() {
         return "Car{" +
@@ -56,6 +57,7 @@ public class Car extends Device implements Rechargeable {
         System.out.println("zapłać");
     }
 
+    // metoda która sprzedaje samochody
     @Override
     public void sell(Human seller, Human buyer, Double price) throws Exception {
         if (seller.getCar() != this) {
@@ -71,6 +73,9 @@ public class Car extends Device implements Rechargeable {
         seller.car = null;
         System.out.println("Sprzedano samochód");
     }
+
+    // Dodaj abstrakcyjną metodę refuel() do Car
+    public abstract void refuel();
 }
 
 

@@ -22,7 +22,6 @@ public class Human extends Animal {
         return this.car;
     }
 
-
     public void  setCar(Car car) {
         if (this.salary > car.value) {
             System.out.println("gratulacje kupiłeś za gotówę " + car.model);
@@ -51,8 +50,13 @@ public class Human extends Animal {
         }
     }
 
+    // przesłonięta metoda z Animal
+    @Override
+    public void takeForAWalk() {
+        System.out.println("Inne wyprowadzanie na spacer");
+    }
+
     public String toString() {
         return this.firstName + " " + this.lastName + " lat " + age;
     }
-
 }

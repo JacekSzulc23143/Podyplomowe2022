@@ -50,7 +50,6 @@ public abstract class Animal implements Feedable, Saleable {
         buyer.pet = this;
         seller.pet = null;
         System.out.println("Sprzedano zwierzaka");
-
     }
 
     public Double getWeight() {
