@@ -25,7 +25,7 @@ public class Main {
         System.out.println("Pet.toString(): " + cat);
         System.out.println("=^=========linijka 26=========^=");
 
-        Human kacper = new Human();
+        Human kacper = new Human(1, 10.0);
         kacper.age = 99;
 
         kacper.setSalary(1000.0);
@@ -57,7 +57,7 @@ public class Main {
         Car pasat2 = new Diesel("pasat", "vw", 2001);
         pasat2.value = 1300.0;
 
-        Human brotherInLaw = new Human();
+        Human brotherInLaw = new Human(1, 20.0);
         brotherInLaw.cash = 3000.0;
 
         kacper.setCar(pasat1);
@@ -74,7 +74,7 @@ public class Main {
         System.out.println("Samochód Kacpra: " + kacper.getCar());
         System.out.println("=^=========linijka 75=========^=");
 
-        Human sister = new Human();
+        Human sister = new Human(1, 15.0);
         sister.cash = 5000.0;
 
         kacper.pet = brotherInLaw;
@@ -103,7 +103,5 @@ public class Main {
 
         System.out.println(nokia.toString());
         System.out.println("=^=========linijka 105=========^=");
-
-
     }
 }

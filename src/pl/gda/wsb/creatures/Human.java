@@ -4,18 +4,27 @@ import pl.gda.wsb.device.Car;
 import pl.gda.wsb.device.Phone;
 
 public class Human extends Animal {
+    private final int garage;
     public String firstName;
     public String lastName;
 
     public Phone mobile;
     public Animal pet;
-    public Car car;
+    public int Car[] garage;
+    public Double garageSize;
     private Double salary;
     public Double cash;
 
-    public Human() {
+//    public Human() {
+//        super("homo sapiens");
+//        this.cash = 0.0;
+//    }
+
+    public Human(int garage, Double garageSize) {
         super("homo sapiens");
         this.cash = 0.0;
+        this.garage = garage;
+        this.garageSize = garageSize;
     }
 
     public Car getCar() {
