@@ -5,7 +5,8 @@ import pl.gda.wsb.Saleable;
 public abstract class Device implements Saleable {
     final public String producer;
     final public String model;
-    final public Integer yearOfProduction;
+    public Integer yearOfProduction;
+    public Double value = 1000.0;
 
     // konstruktor
     public Device(String producer, String model, Integer yearOfProduction) {
