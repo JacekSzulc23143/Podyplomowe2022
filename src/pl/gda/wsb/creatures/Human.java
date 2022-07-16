@@ -5,7 +5,6 @@ import pl.gda.wsb.device.Phone;
 import pl.gda.wsb.device.ProductionYearCarComparator;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
 public class Human extends Animal {
     public String firstName;
@@ -14,7 +13,7 @@ public class Human extends Animal {
     public Phone mobile;
     public Animal pet;
     public Car[] garage; // Zadanie 11 pkt 1.
-    private static final int DEFAULT_GARAGE_SIZE = 3; // Zadanie 11 pkt 2.
+    private static final Integer DEFAULT_GARAGE_SIZE = 3; // Zadanie 11 pkt 2.
     private Double salary;
     public Double cash;
 
@@ -35,11 +34,11 @@ public class Human extends Animal {
 
     // Zadanie 11 pkt 4. Popraw metody getCar i setCar, żeby przyjmowały jako parametr numer miejsca parkingowego w
     // garażu z którego ma być pobrany samochód lub na które ma być wstawiony samochód.
-    public Car getCar(Integer parkingPlaceNumber ) {
+    public Car getCar(Integer parkingPlaceNumber) {
         return this.garage[parkingPlaceNumber];
     }
 
-    public void setCar(Car car,Integer parkingPlaceNumber) {
+    public void setCar(Car car, Integer parkingPlaceNumber) {
         this.garage[parkingPlaceNumber] = car;
     }
 
@@ -78,7 +77,7 @@ public class Human extends Animal {
 
     // Zadanie 11 pkt 5. Utwórz metodę, która zwraca sumę wartości pojazdów w garażu. Pole Double value powinno
     // znajdować się w klasie Device.
-    public Double getGarageValue(){
+    public Double getGarageValue() {
         Double value = 0.0;
         for (Car car : garage) {
             if (car.value != null) {
@@ -89,8 +88,9 @@ public class Human extends Animal {
     }
 
     // Zadanie 11 pkt 6. Utwórz metodę sortującą samochody w garażu po roku produkcji od najstarszych do najmłodszych.
-    public void sortCars() {
+    public boolean sortCars() {
         Arrays.sort(garage, new ProductionYearCarComparator());
+        return false;
     }
 
     // Zadanie 11 pkt 7.
@@ -121,6 +121,7 @@ public class Human extends Animal {
         for (int i = 0; i < garage.length; i++) {
             if (garage[i] == null)
                 garage[i] = newCar;
+                newCar.owners.add(this);
             return;
         }
     }

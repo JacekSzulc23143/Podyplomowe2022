@@ -7,35 +7,35 @@ import java.util.*;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Pet dog = new Pet("canis");
         dog.isAlive = true;
         dog.name = "Szarik";
 
         System.out.println(dog.name);
         System.out.println("species: " + dog.species + " name: " + dog.name);
-        System.out.println("=^=========linijka 19=========^=");
+        System.out.println("=^=========linijka 17=========^=");
 
         Pet cat = new Pet("felis");
         cat.isAlive = true;
         cat.name = "Sierściuch";
 
         System.out.println("Pet.toString(): " + cat);
-        System.out.println("=^=========linijka 26=========^=");
+        System.out.println("=^=========linijka 24=========^=");
 
         Human kacper = new Human(3);
         kacper.age = 99;
 
 //        kacper.setSalary(1000.0);
         System.out.println(kacper.getSalary());
-        System.out.println("=^=========linijka 33=========^=");
+        System.out.println("=^=========linijka 31=========^=");
 
 //        Car fiat = new Diesel("bravo","fiat", 2021);
 //        fiat.value = 500.0;
 
 //        kacper.setCar(fiat, 3);
         kacper.isAlive = false;
-        System.out.println("=^=========linijka 40=========^=");
+        System.out.println("=^=========linijka 38=========^=");
 
         kacper.firstName = "Kacper";
         kacper.lastName = "Warda";
@@ -43,11 +43,11 @@ public class Main {
         kacper.mobile = new Phone("6s", "apple", 2018);
 
         kacper.pet.feed();
-        System.out.println("=^=========linijka 48=========^=");
+        System.out.println("=^=========linijka 46=========^=");
 
 //        System.out.println(kacper.getCar(1));
 //        System.out.println(kacper);
-        System.out.println("=^=========linijka 52=========^=");
+        System.out.println("=^=========linijka 50=========^=");
 
 //        Car pasat1 = new Diesel("pasat", "vw", 2001);
 //        pasat1.value = 1200.0;
@@ -59,7 +59,7 @@ public class Main {
 //        brotherInLaw.cash = 3000.0;
 
 //        kacper.setCar(pasat1, 1);
-        System.out.println("=^=========linijka 64=========^=");
+        System.out.println("=^=========linijka 62=========^=");
 
 //        try {
 //            pasat1.sell(kacper, brotherInLaw, 1000.0);
@@ -70,7 +70,7 @@ public class Main {
 
 //        System.out.println("Samochód szwagra: " + brotherInLaw.getCar(1));
 //        System.out.println("Samochód Kacpra: " + kacper.getCar(1));
-        System.out.println("=^=========linijka 75=========^=");
+        System.out.println("=^=========linijka 73=========^=");
 
 //        Human sister = new Human(1);
 //        sister.cash = 5000.0;
@@ -87,7 +87,7 @@ public class Main {
 
         Phone nokia = new Phone("6410", "Nokia", 2000);
         nokia.installAnApp("YouTube");
-        System.out.println("=^=========linijka 92=========^=");
+        System.out.println("=^=========linijka 90=========^=");
 
 //        try {
 //            nokia.sell(kacper, brotherInLaw, 800.0);
@@ -97,16 +97,17 @@ public class Main {
 //        }
 
 //        sister.takeForAWalk();
-        System.out.println("=^=========linijka 102=========^=");
+        System.out.println("=^=========linijka 100=========^=");
 
         System.out.println(nokia.toString());
-        System.out.println("=^=========linijka 105=========^=");
+        System.out.println("=^=========linijka 103=========^=");
 
         FarmAnimal cow = new FarmAnimal("krówka");
         cow.beEaten();
+        System.out.println("=^=========linijka 107=========^=");
 
 
-        LPG Audi = new LPG("A3", "Audi", 2021, 4344.54) {
+        Car Audi = new LPG("A3", "Audi", 2021, 4344.54) {
             @Override
             public void refuel() {
 
@@ -143,5 +144,53 @@ public class Main {
         kacper.garage[1] = Audi;
         kacper.getCar(1);
         kacper.garage[0] = Golf;
+        System.out.println("=^=========linijka 147=========^=");
+
+        Car passat = new Diesel("Volkswagen","Passat B5", 2002, 3500.0);
+        passat.refuel();
+        System.out.println("---------");
+        Car astra = new LPG("Opel", "Astra Classic", 1999, 2000.0);
+        astra.refuel();
+        System.out.println("---------");
+        Car tesla = new Electric("Tesla", "S", 2021, 30000.0);
+        tesla.refuel();
+        System.out.println("---------");
+        System.out.println("=^=========linijka 158=========^=");
+
+        Human jacek = new Human();
+        jacek.cash = 30000.0;
+
+        Human radek = new Human(3);
+        radek.firstName = "Radek";
+        radek.lastName = "Białek";
+        radek.mobile = new Phone("7s", "apple", 2019);
+        radek.pet = cat;
+        radek.setSalary(100000.0);
+        radek.cash = 19000.0;
+        radek.setCar(passat, 0);
+        radek.setCar(astra, 1);
+        radek.setCar(tesla, 2);
+
+//        System.out.println(radek.getGarageValue());
+//        System.out.println(radek.sortCars());
+
+        System.out.println(radek);
+        System.out.println("=^=========linijka 178=========^=");
+
+        // Zadanie nr 12.
+        System.out.println("Passat -ile transakcji: " + passat.howManyTransactions());
+        radek.addCar(passat);
+        System.out.println("Passat -ile transakcji: " + passat.howManyTransactions());
+        System.out.println("Astra -ile transakcji: " + astra.howManyTransactions());
+        radek.addCar(astra);
+        System.out.println("Astra -ile transakcji: " + astra.howManyTransactions());
+        System.out.println("Astra -rozmiar właścicieli: " + astra.owners.size());
+        System.out.println("---------");
+        astra.sell(radek, jacek, 1900.0);
+        System.out.println("Astra -ile transakcji: " + astra.howManyTransactions());
+        System.out.println("Astra -czy radek był właścicielem: " + astra.wasEverOwner(radek));
+        System.out.println("Astra -czy radek sprzedał ją jackowi: " + astra.isSoldByTo(radek, jacek));
+        System.out.println("Astra -czy jacek sprzedał ją radkowi: " + astra.isSoldByTo(jacek, radek));
+        System.out.println("=^=========linijka 194=========^=");
     }
 }
