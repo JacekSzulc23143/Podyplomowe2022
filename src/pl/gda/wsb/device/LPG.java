@@ -1,8 +1,8 @@
 package pl.gda.wsb.device;
 
 public class LPG extends Car {
-    public LPG(String model, String producer, Integer yearOfProduction, Double value) {
-        super(model, producer, yearOfProduction, value);
+    public LPG(String producer, String model, Integer yearOfProduction, Double value) {
+        super(producer, model, yearOfProduction, value);
     }
 
     @Override

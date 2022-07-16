@@ -10,14 +10,11 @@ public abstract class Car extends Device implements Rechargeable {
     public Double millage;
     public Double engineVolume;
     public String color;
-    public Double value;
     public List<Human> owners = new ArrayList<>(); // Zadanie 12 pkt 1.
 
     // Konstruktor który tworzy nowy samochód. Prawym Generate... Constructor
-    public Car(String model, String producer, int yearOfProduction, Double value) {
-        super(model, producer, yearOfProduction, value);
-        this.yearOfProduction = yearOfProduction;
-        this.value = value;
+    public Car(String producer, String model, Integer yearOfProduction, Double value) {
+        super(producer, model, yearOfProduction, value);
     }
 
     public void turnOn() {
@@ -27,16 +24,13 @@ public abstract class Car extends Device implements Rechargeable {
         System.out.println("odpalił");
     }
 
-    // przesłonięta metoda z Device
     @Override
     public String toString() {
-        return "Car{" +
-                "model='" + model + '\'' +
-                ", producer='" + producer + '\'' +
-                ", millage=" + millage +
+        return "\nCar{" +
+                "millage=" + millage +
                 ", engineVolume=" + engineVolume +
                 ", color='" + color + '\'' +
-                '}';
+                "} " + super.toString();
     }
 
     // porównywanie

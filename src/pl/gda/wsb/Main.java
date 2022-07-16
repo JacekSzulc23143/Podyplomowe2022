@@ -30,9 +30,9 @@ public class Main {
         System.out.println(kacper.getSalary());
         System.out.println("=^=========linijka 31=========^=");
 
-//        Car fiat = new Diesel("bravo","fiat", 2021);
+//        Car fiat = new Diesel("Fiat","Bravo", 2021);
 //        fiat.value = 500.0;
-
+//
 //        kacper.setCar(fiat, 3);
         kacper.isAlive = false;
         System.out.println("=^=========linijka 38=========^=");
@@ -49,10 +49,10 @@ public class Main {
 //        System.out.println(kacper);
         System.out.println("=^=========linijka 50=========^=");
 
-//        Car pasat1 = new Diesel("pasat", "vw", 2001);
+//        Car pasat1 = new Diesel("VW", "Pasat", 2001);
 //        pasat1.value = 1200.0;
 //        pasat1.color = "Niebieski";
-//        Car pasat2 = new Diesel("pasat", "vw", 2001);
+//        Car pasat2 = new Diesel("VW", "Pasat", 2001);
 //        pasat2.value = 1300.0;
 
 //        Human brotherInLaw = new Human(1);
@@ -107,23 +107,20 @@ public class Main {
         System.out.println("=^=========linijka 107=========^=");
 
 
-        Car Audi = new LPG("A3", "Audi", 2021, 4344.54) {
+        Car Audi = new LPG("Audi", "A3", 2021, 4344.54) {
             @Override
             public void refuel() {
-
             }
         };
 
-        Car Golf = new Diesel("5", "Volkswagen", 2012, 54444.54) {
+        Car Golf = new Diesel("Volkswagen", "5", 2012, 54444.54) {
             @Override
             public void refuel() {
-
             }
         };
-        Car Fiat = new Electric("Punto", "Fiat", 1993, 344.54) {
+        Car Fiat = new Electric("Fiat", "Punto", 1993, 344.54) {
             @Override
             public void refuel() {
-
             }
         };
 
@@ -171,9 +168,9 @@ public class Main {
         radek.setCar(astra, 1);
         radek.setCar(tesla, 2);
 
-//        System.out.println(radek.getGarageValue());
-//        System.out.println(radek.sortCars());
-
+        System.out.println(radek.getGarageValue());
+        System.out.println(radek.sortGarage());
+        System.out.println();
         System.out.println(radek);
         System.out.println("=^=========linijka 178=========^=");
 

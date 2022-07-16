@@ -27,7 +27,7 @@ public abstract class Device implements Saleable {
                 ", model='" + model + '\'' +
                 ", yearOfProduction=" + yearOfProduction +
                 ", value=" + value +
-                '}';
+                "}\n";
     }
 
     public abstract void turnOn();

@@ -2,9 +2,11 @@ package pl.gda.wsb.creatures;
 
 import pl.gda.wsb.device.Car;
 import pl.gda.wsb.device.Phone;
-import pl.gda.wsb.device.ProductionYearCarComparator;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Human extends Animal {
     public String firstName;
@@ -84,13 +86,15 @@ public class Human extends Animal {
                 value += car.value;
             }
         }
+        System.out.println("Wartość pojazdów w garażu:");
         return value;
     }
 
     // Zadanie 11 pkt 6. Utwórz metodę sortującą samochody w garażu po roku produkcji od najstarszych do najmłodszych.
-    public boolean sortCars() {
-        Arrays.sort(garage, new ProductionYearCarComparator());
-        return false;
+    public List<Car> sortGarage() {
+        return Arrays.stream(garage)
+                .sorted(Comparator.comparing(car -> car.yearOfProduction))
+                .collect(Collectors.toList());
     }
 
     // Zadanie 11 pkt 7.

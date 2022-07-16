@@ -1,8 +1,8 @@
 package pl.gda.wsb.device;
 
 public class Diesel extends Car {
-    public Diesel(String model, String producer, Integer yearOfProduction, Double value) {
-        super(model, producer, yearOfProduction, value);
+    public Diesel(String producer, String model, Integer yearOfProduction, Double value) {
+        super(producer, model, yearOfProduction, value);
     }
 
     @Override
