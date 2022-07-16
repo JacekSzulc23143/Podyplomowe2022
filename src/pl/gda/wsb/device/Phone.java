@@ -5,6 +5,7 @@ import pl.gda.wsb.creatures.Human;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Phone extends Device implements Rechargeable {
@@ -12,12 +13,16 @@ public class Phone extends Device implements Rechargeable {
     static final String DEFAULT_SERVER_ADDRESS = "play.store.com";
     private static final Integer DEFAULT_PORT_NUMBER = 443;
     private static final String DEFAULT_PROTOCOL = "https";
+    List <Application> applicationList; // Zadanie 13 pkt 2. Dodaj do klasy Phone zbiór aplikacji.
 
     public Double screenSize;
     public String os;
+    final String operatingSystem;
 
-    public Phone(String producer, String model, Integer yearOfProduction) {
-        super(producer, model, yearOfProduction);
+    public Phone(String producer, String model, Integer yearOfProduction, Double value, Double screenSize, String operatingSystem) {
+        super(producer, model, yearOfProduction, value);
+        this.operatingSystem = operatingSystem;
+        this.applicationList = new ArrayList<>();
     }
 
     @Override
@@ -100,9 +105,94 @@ public class Phone extends Device implements Rechargeable {
         System.out.println("udało się zainstalować " + url.getFile() + " z serwera " + url.getHost());
     }
 
-    // przesłonięta metoda z Device
+//    // przesłonięta metoda z Device
+//    @Override
+//    public String toString() {
+//        return "Elo, niezły telefon";
+//    }
+
     @Override
     public String toString() {
-        return "Elo, niezły telefon";
+        return "Phone{" +
+                "screenSize=" + screenSize +
+                ", operatingSystem='" + operatingSystem + '\'' +
+                "} " + super.toString();
+    }
+
+    // Zadanie 13. Sprawdzamy czy właściciel telefonu ma dość pieniędzy, dodajemy zainstalowaną aplikację do zbioru, zmniejszamy ilość gotówki na koncie kupującego
+    public void installAnApp(Human owner, Application application) {
+        if (owner.cash < application.price) {
+            System.out.println("Brak funduszy na instalację aplikacji.");
+        } else {
+            owner.cash -= application.price;
+            this.applicationList.add(application);
+        }
+    }
+
+    // sprawdzenie czy aplikacja jest zainstalowana przyjmującą w parametrze obiekt klasy Application.
+    public boolean hasApplication(Application applicationObject) {
+        for (Application application : applicationList) {
+            if (application == applicationObject) {
+                System.out.println("Została zainstalowana aplikacja przyjmującą w parametrze obiekt klasy Application" +
+                        ".");
+                return true;
+            }
+        }
+        System.out.println("Nie została zainstalowana aplikacja przyjmującą w parametrze obiekt klasy Application.");
+        return false;
+    }
+
+    // sprawdzenie czy aplikacja jest zainstalowana przyjmująca w parametrze nazwę aplikacji.
+    public boolean hasApplication(String applicationName) {
+        for (Application application : applicationList) {
+            if (application.name.equals(applicationName)) {
+                System.out.println("Został zainstalowana aplikacja przyjmującą w parametrze nazwę aplikacji.");
+                return true;
+            }
+        }
+        System.out.println("Nie została zainstalowana aplikacja przyjmującą w parametrze nazwę aplikacji.");
+        return false;
+    }
+
+    // wypisanie wszystkich bezpłatnych aplikacji.
+    public void showAllFreeApplications() {
+        System.out.println("Darmowe aplikacje:");
+
+        for (Application application : applicationList) {
+            if (application.price == 0.0) {
+                System.out.print(application);
+            }
+        }
+    }
+
+    // zwracającą wartość wszystkich zainstalowanych aplikacji.
+    public void showAllApplications() {
+        System.out.println("Zainstalowane aplikacje:");
+
+        for (Application application : applicationList) {
+            System.out.print(application);
+        }
+        System.out.println();
+    }
+
+    // wypisanie nazw wszystkich zainstalowanych aplikacji w kolejności alfabetycznej.
+    public void sortApplicationsByName() {
+        applicationList.sort(Application.byName);
+        System.out.println("Aplikacje wg nazwy:");
+
+        for (Application application : applicationList) {
+            System.out.print(application);
+        }
+    }
+
+    // wypisane nazw wszystkich zainstalowanych aplikacji od najtańszych do najdroższych.
+    public void sortApplicationsByPrice() {
+        applicationList.sort(Application.byPrice);
+        System.out.println("Aplikacje wg ceny:");
+
+        for (Application application : applicationList) {
+            System.out.print(application);
+        }
+
     }
 }

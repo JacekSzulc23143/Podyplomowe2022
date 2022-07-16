@@ -15,7 +15,7 @@ public abstract class Car extends Device implements Rechargeable {
 
     // Konstruktor który tworzy nowy samochód. Prawym Generate... Constructor
     public Car(String model, String producer, int yearOfProduction, Double value) {
-        super(model, producer, yearOfProduction);
+        super(model, producer, yearOfProduction, value);
         this.yearOfProduction = yearOfProduction;
         this.value = value;
     }

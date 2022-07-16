@@ -40,7 +40,7 @@ public class Main {
         kacper.firstName = "Kacper";
         kacper.lastName = "Warda";
         kacper.pet = dog;
-        kacper.mobile = new Phone("6s", "apple", 2018);
+        kacper.mobile = new Phone("Apple", "6s", 2018, 1000.0, 5.5, "iOS");
 
         kacper.pet.feed();
         System.out.println("=^=========linijka 46=========^=");
@@ -85,7 +85,7 @@ public class Main {
 //            e.printStackTrace();
 //        }
 
-        Phone nokia = new Phone("6410", "Nokia", 2000);
+        Phone nokia = new Phone("Nokia", "6410", 2000, 500.0, 4.5, "Android");
         nokia.installAnApp("YouTube");
         System.out.println("=^=========linijka 90=========^=");
 
@@ -138,7 +138,7 @@ public class Main {
         kacper.getSalary();
 
         System.out.println(kacper.getCar(1));
-        kacper.setCar(Audi,1);
+        kacper.setCar(Audi, 1);
         System.out.println(kacper.getCar(1));
 
         kacper.garage[1] = Audi;
@@ -146,7 +146,7 @@ public class Main {
         kacper.garage[0] = Golf;
         System.out.println("=^=========linijka 147=========^=");
 
-        Car passat = new Diesel("Volkswagen","Passat B5", 2002, 3500.0);
+        Car passat = new Diesel("Volkswagen", "Passat B5", 2002, 3500.0);
         passat.refuel();
         System.out.println("---------");
         Car astra = new LPG("Opel", "Astra Classic", 1999, 2000.0);
@@ -163,7 +163,7 @@ public class Main {
         Human radek = new Human(3);
         radek.firstName = "Radek";
         radek.lastName = "Białek";
-        radek.mobile = new Phone("7s", "apple", 2019);
+        radek.mobile = new Phone("Apple", "7s", 2019, 1500.0, 6.0, "iOS");
         radek.pet = cat;
         radek.setSalary(100000.0);
         radek.cash = 19000.0;
@@ -192,5 +192,50 @@ public class Main {
         System.out.println("Astra -czy radek sprzedał ją jackowi: " + astra.isSoldByTo(radek, jacek));
         System.out.println("Astra -czy jacek sprzedał ją radkowi: " + astra.isSoldByTo(jacek, radek));
         System.out.println("=^=========linijka 194=========^=");
+
+    // Zadanie nr 13.
+        Phone phone = new Phone("Apple", "iPhone 7", 2016, 1200.0, 4.7, "iOS");
+        Phone phone2 = new Phone("Samsung", "Galaxy 7", 2016, 1000.0, 5.7, "Android");
+
+        radek.cash = 6500.0;
+        jacek.cash = 10.0;
+
+        radek.mobile = phone;
+        jacek.mobile = phone2;
+
+        Application whatsApp = new Application("WhatsApp", "10.3.1", 0.0);
+        Application beatFind = new Application("BeatFind", "8.5.0", 15.0);
+        Application instagram = new Application("Instagram", "5.8.1", 0.0);
+        Application spotify = new Application("Spotify", "2.2.7", 5.0);
+
+        phone.installAnApp(radek,whatsApp);
+        phone.installAnApp(radek,instagram);
+        phone.installAnApp(radek,spotify);
+
+        System.out.println(phone.hasApplication(whatsApp) + " \"WhatsApp\"");
+        System.out.println(phone.hasApplication("WhatsApp") + " \"WhatsApp\"");
+        System.out.println();
+        System.out.println(phone.hasApplication(beatFind) + " \"BeatFind\"");
+        System.out.println(phone.hasApplication("BeatFind") + " \"BeatFind\"");
+
+        System.out.println();
+
+        phone.showAllApplications();
+        phone.showAllFreeApplications();
+
+        System.out.println();
+        phone.sortApplicationsByName();
+        System.out.println();
+        phone.sortApplicationsByPrice();
+        System.out.println();
+
+        phone2.installAnApp(jacek,beatFind);
+        System.out.println(phone2.hasApplication(beatFind) + " \"BeatFind\"");
+        System.out.println();
+        phone2.installAnApp(jacek,spotify);
+        System.out.println(phone2.hasApplication(spotify) + " \"Spotify\"");
+        System.out.println();
+        System.out.println("Ilość pieniędzy Radka: " + radek.cash);
+        System.out.println("Ilość pieniędzy Jacka: " + jacek.cash);
     }
 }
